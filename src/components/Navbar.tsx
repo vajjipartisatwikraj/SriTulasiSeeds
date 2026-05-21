@@ -50,11 +50,12 @@ export function Navbar() {
                 transparent ? "text-white/85 hover:text-white" : "text-foreground/75 hover:text-primary"
               }`}
               activeOptions={{ exact: true }}
-              activeProps={{ className: transparent ? "!text-white" : "!text-primary" }}
             >
               {({ isActive }) => (
                 <>
-                  <span>{n.label}</span>
+                  <span className={isActive ? (transparent ? "text-white" : "text-primary") : ""}>
+                    {n.label}
+                  </span>
                   {isActive && (
                     <motion.span
                       layoutId="nav-underline"
