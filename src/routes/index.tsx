@@ -1,26 +1,302 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { ArrowRight, Sprout, ShieldCheck, Leaf, Microscope } from "lucide-react";
+import products from "@/data/products.json";
+import { IMG } from "@/lib/images";
+import { SITE } from "@/lib/site";
+import { PageTransition } from "@/components/PageTransition";
+import { CountUp } from "@/components/CountUp";
+import { SectionHeader } from "@/components/SectionHeader";
+import { ProductCard, type Product } from "@/components/ProductCard";
+import { Timeline } from "@/components/Timeline";
+import { Testimonials } from "@/components/Testimonials";
+import { IndiaMap } from "@/components/IndiaMap";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Sri Tulasi Agritech — Premium Seeds for Indian Agriculture" },
+      { name: "description", content: "Premium maize, sunflower and paddy seeds. Trusted by 12,000+ farmers across 6 Indian states since 2017." },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <PageTransition>
+      <Hero />
+      <Stats />
+      <About />
+      <Products />
+      <Process />
+      <TestimonialsSection />
+      <GalleryPreview />
+      <Reach />
+    </PageTransition>
   );
 }
 
-function Index() {
-  return <PlaceholderIndex />;
+function Hero() {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      <img
+        src={IMG.hero}
+        alt="Indian agricultural fields at golden hour"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/55 to-leaf/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-32 text-white w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs font-semibold tracking-[0.18em] uppercase">
+            <Sprout className="h-3.5 w-3.5" /> Since {SITE.established} · Hyderabad, India
+          </span>
+          <h1 className="mt-6 font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
+            Empowering Indian<br />
+            <span className="italic font-light">agriculture</span> with<br />
+            premium seeds.
+          </h1>
+          <p className="mt-7 max-w-xl text-lg text-white/85 leading-relaxed">
+            We craft high-performance hybrid seeds backed by modern science, rigorous testing,
+            and an unwavering commitment to the Indian farmer.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link
+              to="/catalog"
+              className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-primary font-semibold shadow-elegant hover:scale-[1.03] transition-transform"
+            >
+              Explore Catalog
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-full glass-dark text-white font-semibold hover:bg-white/15 transition-colors"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-xs tracking-[0.3em] uppercase"
+      >
+        Scroll to explore
+      </motion.div>
+    </section>
+  );
+}
+
+function Stats() {
+  const items = [
+    { value: SITE.stats.tons, suffix: "+", label: "Tons of Seeds Sold" },
+    { value: SITE.stats.states, suffix: "", label: "Indian States Covered" },
+    { value: SITE.stats.since, suffix: "", label: "Trusted Since" },
+    { value: SITE.stats.farmers, suffix: "+", label: "Farmers Connected" },
+  ];
+  return (
+    <section className="relative -mt-20 z-10 px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-px rounded-3xl overflow-hidden bg-border shadow-elegant">
+        {items.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            className="bg-card p-8 md:p-10"
+          >
+            <p className="font-display text-4xl md:text-5xl font-semibold text-gradient">
+              <CountUp to={s.value} suffix={s.suffix} />
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  const pillars = [
+    { icon: Microscope, title: "Modern Testing", desc: "Lab-validated germination, purity and vigour." },
+    { icon: ShieldCheck, title: "Farmer Trust", desc: "Built over years of consistent results in the field." },
+    { icon: Leaf, title: "Sustainable", desc: "Seeds and practices that nourish soil for generations." },
+  ];
+  return (
+    <section className="py-28 md:py-36 px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-2 gap-4">
+          <motion.img
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            src={IMG.gallery[0].src} alt="Farmer" loading="lazy"
+            className="rounded-3xl aspect-[3/4] object-cover w-full shadow-soft"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col gap-4 mt-12"
+          >
+            <img src={IMG.gallery[4].src} alt="Seeds" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
+            <img src={IMG.gallery[1].src} alt="Fields" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
+          </motion.div>
+        </div>
+
+        <div>
+          <SectionHeader
+            eyebrow="About Sri Tulasi"
+            title={<>Seeds engineered for<br /><span className="text-gradient">India's harvests.</span></>}
+            description="Founded in 2017 in Hyderabad, Sri Tulasi Agritech blends time-honoured farming wisdom with modern science to deliver hybrid seeds that perform — season after season, state after state."
+          />
+          <div className="mt-10 grid sm:grid-cols-3 gap-5">
+            {pillars.map((p) => {
+              const Icon = p.icon;
+              return (
+                <div key={p.title} className="p-5 rounded-2xl bg-card border border-border hover:border-leaf transition-colors">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl gradient-leaf text-primary">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h4 className="mt-4 font-display font-semibold text-lg">{p.title}</h4>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Products() {
+  return (
+    <section className="py-24 md:py-32 px-6 lg:px-10 bg-earth/40">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <SectionHeader
+            eyebrow="Our Catalog"
+            title={<>Premium seeds.<br /><span className="text-gradient">Proven performance.</span></>}
+          />
+          <Link to="/catalog" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition">
+            View Full Catalog <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+          {(products as Product[]).map((p, i) => (
+            <ProductCard key={p.id} product={p} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section className="py-28 md:py-36 px-6 lg:px-10">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          center
+          eyebrow="Our Process"
+          title={<>From seed to <span className="text-gradient">farmer's hand.</span></>}
+          description="A six-stage journey that defines every batch — meticulous, transparent, and built for trust."
+        />
+        <div className="mt-20">
+          <Timeline />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  return (
+    <section className="py-24 md:py-32 px-6 lg:px-10 gradient-leaf">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          center
+          eyebrow="Farmer Voices"
+          title={<>Trusted across <span className="text-gradient">six states.</span></>}
+        />
+        <div className="mt-16">
+          <Testimonials />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GalleryPreview() {
+  const items = IMG.gallery.slice(0, 6);
+  return (
+    <section className="py-24 md:py-32 px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <SectionHeader
+            eyebrow="Gallery"
+            title={<>Moments from <span className="text-gradient">the fields.</span></>}
+          />
+          <Link to="/gallery" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90">
+            Open Gallery <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 [grid-auto-rows:160px]">
+          {items.map((g, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className={`relative overflow-hidden rounded-3xl group ${
+                i === 0 ? "row-span-2 col-span-2" : i === 3 ? "row-span-2" : ""
+              }`}
+            >
+              <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="absolute bottom-4 left-4 text-white text-xs font-semibold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                {g.category}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Reach() {
+  return (
+    <section className="py-28 md:py-36 px-6 lg:px-10 bg-earth/40">
+      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <SectionHeader
+            eyebrow="National Footprint"
+            title={<>Serving farmers across <span className="text-gradient">India.</span></>}
+            description="From the rice paddies of Andhra Pradesh to the wheat fields of Haryana — our seeds are at home in six diverse Indian states."
+          />
+          <ul className="mt-10 grid grid-cols-2 gap-3">
+            {SITE.states.map((s) => (
+              <li key={s} className="flex items-center gap-3 p-4 rounded-2xl bg-card border border-border">
+                <span className="h-2.5 w-2.5 rounded-full bg-leaf animate-pulse" />
+                <span className="font-medium">{s}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <IndiaMap />
+      </div>
+    </section>
+  );
 }

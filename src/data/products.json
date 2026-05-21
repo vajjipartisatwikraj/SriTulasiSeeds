@@ -1,0 +1,35 @@
+[
+  {
+    "id": "maize",
+    "name": "Maize Seeds",
+    "tagline": "High-Yield Hybrid Maize",
+    "image": "maize",
+    "description": "Premium hybrid maize seeds engineered for maximum yield, disease resistance, and consistent kernel quality across diverse Indian agro-climatic zones.",
+    "features": ["High germination 95%+", "Drought tolerant", "Disease resistant", "Uniform kernel size"],
+    "germination": "95% minimum",
+    "climate": "Tropical & Subtropical — 21°C to 35°C",
+    "tags": ["Hybrid", "Premium", "High-Yield"]
+  },
+  {
+    "id": "sunflower",
+    "name": "Sunflower Seeds",
+    "tagline": "Oil-Rich Hybrid Sunflower",
+    "image": "sunflower",
+    "description": "Superior sunflower hybrids selected for high oil content, large flower heads, and excellent adaptability to rainfed and irrigated conditions.",
+    "features": ["42%+ oil content", "Large flower heads", "Self-pollinating", "Wide adaptability"],
+    "germination": "92% minimum",
+    "climate": "Semi-arid & Temperate — 20°C to 32°C",
+    "tags": ["Oil-Rich", "Hybrid", "Drought-Smart"]
+  },
+  {
+    "id": "rice",
+    "name": "Rice Paddy Seeds",
+    "tagline": "Aromatic & High-Yielding Paddy",
+    "image": "rice",
+    "description": "Premium paddy seeds offering long grain quality, superior milling output, and resistance to common bacterial blights and pests.",
+    "features": ["Long grain", "Pest resistant", "High milling recovery", "Lodging tolerant"],
+    "germination": "90% minimum",
+    "climate": "Tropical wetlands — 20°C to 37°C",
+    "tags": ["Aromatic", "Premium", "Long-Grain"]
+  }
+]
