@@ -1,13 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import { vercel } from '@tanstack/start-vercel/vite'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
 export default defineConfig({
   plugins: [
-    tanstackStart({
-      adapter: vercel(),
-    }),
+    tanstackStart(),
     react(),
   ],
-})
+});
