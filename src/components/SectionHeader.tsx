@@ -20,16 +20,16 @@ export function SectionHeader({
       className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}
     >
       {eyebrow && (
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-leaf-soft text-primary text-xs font-semibold tracking-wider uppercase">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-leaf-soft text-primary text-[10px] sm:text-xs font-medium sm:font-medium tracking-wide uppercase">
           <span className="h-1.5 w-1.5 rounded-full bg-leaf" />
           {eyebrow}
         </span>
       )}
-      <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight">
+      <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-medium sm:font-semibold leading-[1.05] tracking-tight">
         {title}
       </h2>
       {description && (
-        <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+        <p className="mt-4 text-sm sm:text-base md:text-base text-muted-foreground leading-relaxed font-normal">
           {description}
         </p>
       )}

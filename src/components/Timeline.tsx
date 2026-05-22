@@ -27,14 +27,14 @@ export function Timeline() {
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               className={`relative md:grid md:grid-cols-2 md:gap-16 items-center ${left ? "" : "md:[&>*:first-child]:order-2"}`}
             >
-              <div className={`${left ? "md:text-right md:pr-8" : "md:pl-8"}`}>
-                <span className="text-leaf font-mono text-sm font-semibold">0{i + 1}</span>
-                <h3 className="mt-2 font-display text-2xl md:text-3xl font-semibold">{s.title}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{s.desc}</p>
+              <div className={`${left ? "md:text-right md:pr-4" : "md:pl-4"}`}>
+                <span className="text-leaf font-mono text-xs sm:text-sm font-medium sm:font-semibold">0{i + 1}</span>
+                <h3 className="mt-2 font-display text-lg sm:text-2xl md:text-3xl font-medium sm:font-semibold">{s.title}</h3>
+                <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">{s.desc}</p>
               </div>
-              <div className={`mt-5 md:mt-0 ${left ? "md:pl-8" : "md:pr-8"}`}>
-                <div className="relative inline-flex items-center justify-center h-20 w-20 rounded-3xl gradient-leaf text-primary shadow-soft">
-                  <Icon className="h-9 w-9" />
+              <div className={`mt-4 md:mt-0 ${left ? "md:pl-8" : "md:pr-8 md:-mr-12"}`}>
+                <div className="relative inline-flex items-center justify-center h-16 md:h-20 w-16 md:w-20 rounded-3xl gradient-leaf text-primary shadow-soft">
+                  <Icon className="h-7 md:h-9 w-7 md:w-9" />
                 </div>
               </div>
               <span className="hidden md:flex absolute left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-white border-4 border-leaf shadow-soft" />

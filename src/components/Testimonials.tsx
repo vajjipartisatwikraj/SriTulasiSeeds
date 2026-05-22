@@ -26,23 +26,23 @@ export function Testimonials() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="relative bg-card rounded-3xl p-10 md:p-14 shadow-soft border border-border"
+            className="relative bg-card rounded-3xl p-5 sm:p-10 md:p-14 shadow-soft border border-border"
           >
-            <div className="flex gap-1 mb-4">
+            <div className="flex gap-1 mb-3 sm:mb-4">
               {Array.from({ length: 5 }).map((_, k) => (
-                <Star key={k} className={`h-4 w-4 ${k < t.rating ? "fill-leaf text-leaf" : "text-border"}`} />
+                <Star key={k} className={`h-3 sm:h-4 w-3 sm:w-4 ${k < t.rating ? "fill-leaf text-leaf" : "text-border"}`} />
               ))}
             </div>
-            <p className="font-display text-2xl md:text-3xl leading-snug text-foreground">
-              “{t.text}”
+            <p className="font-display text-lg sm:text-2xl md:text-3xl leading-snug text-foreground">
+              "{t.text}"
             </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="h-12 w-12 rounded-full gradient-leaf flex items-center justify-center font-display font-bold text-primary">
+            <div className="mt-5 sm:mt-8 flex items-center gap-3 sm:gap-4">
+              <div className="h-10 sm:h-12 w-10 sm:w-12 rounded-full gradient-leaf flex items-center justify-center font-display font-bold text-primary text-sm sm:text-base">
                 {t.name.charAt(0)}
               </div>
               <div>
-                <p className="font-semibold">{t.name}</p>
-                <p className="text-sm text-muted-foreground">{t.state}</p>
+                <p className="font-medium sm:font-semibold text-sm sm:text-base">{t.name}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t.state}</p>
               </div>
             </div>
           </motion.div>

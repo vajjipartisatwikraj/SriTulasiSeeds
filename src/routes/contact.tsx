@@ -78,8 +78,8 @@ function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-10">
-        <div className="mx-auto max-w-7xl grid lg:grid-cols-5 gap-10">
+      <section className="py-20 px-4 sm:px-6 lg:px-10">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-5 gap-6 sm:gap-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
@@ -148,7 +148,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <section className="pb-24 px-6 lg:px-10">
+      <section className="pb-12 md:pb-16 px-6 lg:px-10">
         <div className="mx-auto max-w-7xl rounded-3xl overflow-hidden border border-border shadow-soft aspect-[16/7]">
           <iframe
             title="Sri Tulasi Agritech location"

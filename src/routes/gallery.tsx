@@ -51,7 +51,7 @@ function GalleryPage() {
         </div>
       </section>
 
-      <section className="py-16 px-6 lg:px-10">
+      <section className="py-10 md:py-16 px-6 lg:px-10">
         <div className="mx-auto max-w-7xl columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 [&>*]:mb-5">
           {items.map((g, i) => (
             <motion.button

@@ -11,6 +11,7 @@ import { ProductCard, type Product } from "@/components/ProductCard";
 import { Timeline } from "@/components/Timeline";
 import { Testimonials } from "@/components/Testimonials";
 import { IndiaMap } from "@/components/IndiaMap";
+import { FAQ } from "@/components/FAQ";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,6 +34,7 @@ function Home() {
       <TestimonialsSection />
       <GalleryPreview />
       <Reach />
+      <FAQ />
     </PageTransition>
   );
 }
@@ -40,44 +42,49 @@ function Home() {
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <img
-        src={IMG.hero}
-        alt="Indian agricultural fields at golden hour"
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
         className="absolute inset-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/55 to-leaf/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+      >
+        <source src="https://sritulasiseeds.sgp1.cdn.digitaloceanspaces.com/Untitled%20-%20May%2021,%202026%20at%2021.03.08%20(1).mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-primary/40 to-leaf/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-32 text-white w-full">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20 sm:py-32 text-white w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl"
+          className="max-w-3xl md:-ml-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs font-semibold tracking-[0.18em] uppercase">
+          <span className="inline-flex items-center gap-2 px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full glass-dark text-[10px] sm:text-xs font-normal sm:font-medium tracking-[0.08em] sm:tracking-[0.16em] uppercase">
             <Sprout className="h-3.5 w-3.5" /> Since {SITE.established} · Hyderabad, India
           </span>
-          <h1 className="mt-6 font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
+          <h1 className="mt-4 sm:mt-6 font-display text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-medium sm:font-semibold leading-[1.05] tracking-tight">
             Empowering Indian<br />
             <span className="italic font-light">agriculture</span> with<br />
             premium seeds.
           </h1>
-          <p className="mt-7 max-w-xl text-lg text-white/85 leading-relaxed">
+          <p className="mt-5 sm:mt-7 max-w-xl text-sm sm:text-lg text-white/85 leading-relaxed">
             We craft high-performance hybrid seeds backed by modern science, rigorous testing,
             and an unwavering commitment to the Indian farmer.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4">
             <Link
               to="/catalog"
-              className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-primary font-semibold shadow-elegant hover:scale-[1.03] transition-transform"
+              className="group inline-flex items-center justify-center sm:justify-start gap-2 px-6 sm:px-7 py-3 sm:py-4 rounded-full bg-white text-primary font-medium sm:font-semibold shadow-elegant hover:scale-[1.03] transition-transform text-sm sm:text-base"
             >
               Explore Catalog
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-full glass-dark text-white font-semibold hover:bg-white/15 transition-colors"
+              className="inline-flex items-center justify-center sm:justify-start gap-2 px-6 sm:px-7 py-3 sm:py-4 rounded-full glass-dark text-white font-medium sm:font-semibold hover:bg-white/15 transition-colors text-sm sm:text-base"
             >
               Contact Us
             </Link>
@@ -89,7 +96,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-xs tracking-[0.3em] uppercase"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-[8px] sm:text-xs tracking-[0.3em] uppercase"
       >
         Scroll to explore
       </motion.div>
@@ -105,8 +112,8 @@ function Stats() {
     { value: SITE.stats.farmers, suffix: "+", label: "Farmers Connected" },
   ];
   return (
-    <section className="relative -mt-20 z-10 px-6 lg:px-10">
-      <div className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-px rounded-3xl overflow-hidden bg-border shadow-elegant">
+    <section className="relative px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-px rounded-b-3xl overflow-hidden bg-border shadow-elegant">
         {items.map((s, i) => (
           <motion.div
             key={s.label}
@@ -116,10 +123,10 @@ function Stats() {
             transition={{ duration: 0.5, delay: i * 0.08 }}
             className="bg-card p-8 md:p-10"
           >
-            <p className="font-display text-4xl md:text-5xl font-semibold text-gradient">
+            <p className="font-display text-2xl md:text-5xl font-medium md:font-semibold text-gradient">
               <CountUp to={s.value} suffix={s.suffix} />
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
+            <p className="mt-2 text-xs md:text-sm text-muted-foreground">{s.label}</p>
           </motion.div>
         ))}
       </div>
@@ -136,20 +143,20 @@ function About() {
   return (
     <section className="py-28 md:py-36 px-6 lg:px-10">
       <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 items-center">
           <motion.img
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             src={IMG.gallery[0].src} alt="Farmer" loading="lazy"
-            className="rounded-3xl aspect-[3/4] object-cover w-full shadow-soft"
+            className="rounded-3xl aspect-[3/4] object-cover w-full shadow-soft row-span-2"
           />
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col gap-4 mt-12"
+            className="flex flex-col gap-4"
           >
             <img src={IMG.gallery[4].src} alt="Seeds" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
-            <img src={IMG.gallery[1].src} alt="Fields" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
+            <img src="/landscape-summer-farm-wheat-field-harvest-crops.jpg" alt="Fields" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
           </motion.div>
         </div>
 
@@ -167,8 +174,8 @@ function About() {
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl gradient-leaf text-primary">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h4 className="mt-4 font-display font-semibold text-lg">{p.title}</h4>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+                  <h4 className="mt-4 font-display font-medium md:font-semibold text-base md:text-lg">{p.title}</h4>
+                  <p className="mt-1 text-xs md:text-sm text-muted-foreground">{p.desc}</p>
                 </div>
               );
             })}
@@ -188,7 +195,7 @@ function Products() {
             eyebrow="Our Catalog"
             title={<>Premium seeds.<br /><span className="text-gradient">Proven performance.</span></>}
           />
-          <Link to="/catalog" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition">
+          <Link to="/catalog" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium sm:font-semibold hover:bg-primary/90 transition text-sm sm:text-base">
             View Full Catalog <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -247,7 +254,7 @@ function GalleryPreview() {
             eyebrow="Gallery"
             title={<>Moments from <span className="text-gradient">the fields.</span></>}
           />
-          <Link to="/gallery" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90">
+          <Link to="/gallery" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium sm:font-semibold hover:bg-primary/90 text-sm sm:text-base">
             Open Gallery <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -265,7 +272,7 @@ function GalleryPreview() {
             >
               <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="absolute bottom-4 left-4 text-white text-xs font-semibold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+              <span className="absolute bottom-4 left-4 text-white text-[10px] font-medium tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity">
                 {g.category}
               </span>
             </motion.div>
@@ -290,7 +297,7 @@ function Reach() {
             {SITE.states.map((s) => (
               <li key={s} className="flex items-center gap-3 p-4 rounded-2xl bg-card border border-border">
                 <span className="h-2.5 w-2.5 rounded-full bg-leaf animate-pulse" />
-                <span className="font-medium">{s}</span>
+                <span className="text-sm md:text-base font-normal md:font-medium">{s}</span>
               </li>
             ))}
           </ul>

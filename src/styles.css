@@ -2,14 +2,14 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /* Premium fonts */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap");
 
+@custom-variant dark (&:is(.dark *));
+
 @theme inline {
-  --font-display: "Clash Display", "Satoshi", ui-sans-serif, system-ui;
+  --font-display: "Playfair Display", ui-serif, serif;
   --font-sans: "Manrope", "Plus Jakarta Sans", ui-sans-serif, system-ui;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -127,7 +127,6 @@
   .glass {
     background: color-mix(in oklab, white 70%, transparent);
     backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid color-mix(in oklab, white 50%, transparent);
   }
   .glass-dark {
     background: color-mix(in oklab, black 35%, transparent);
