@@ -4,7 +4,9 @@ export const SITE = {
   tagline: "Empowering Indian Agriculture with Premium Seeds",
   established: 2017,
   owner: "Thammaneni Veere Nagi Reddy",
+  director: "Chilakala Arjun Reddy",
   phone: "7036609999",
+  phoneAlt: "7093535139",
   address: {
     line1: "SRI TULASI PVT. LTD",
     line2: "802 Pet Baseerabad, Jeedimatla",
