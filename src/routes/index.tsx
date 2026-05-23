@@ -229,7 +229,7 @@ function Process() {
 
 function TestimonialsSection() {
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-10 gradient-leaf">
+    <section className="relative py-24 md:py-32 px-6 lg:px-10 gradient-leaf texture-waves">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           center
