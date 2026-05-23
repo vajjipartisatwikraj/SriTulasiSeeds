@@ -188,7 +188,7 @@ function About() {
 
 function Products() {
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-10 bg-earth/40">
+    <section className="relative py-24 md:py-32 px-6 lg:px-10 bg-earth/40 texture-waves">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <SectionHeader
