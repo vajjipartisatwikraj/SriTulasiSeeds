@@ -188,7 +188,7 @@ function About() {
 
 function Products() {
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-10 bg-earth/40">
+    <section className="relative py-24 md:py-32 px-6 lg:px-10 bg-earth/40 texture-waves">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <SectionHeader
@@ -229,7 +229,7 @@ function Process() {
 
 function TestimonialsSection() {
   return (
-    <section className="py-24 md:py-32 px-6 lg:px-10 gradient-leaf">
+    <section className="relative py-24 md:py-32 px-6 lg:px-10 gradient-leaf texture-waves">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           center
@@ -285,7 +285,7 @@ function GalleryPreview() {
 
 function Reach() {
   return (
-    <section className="py-28 md:py-36 px-6 lg:px-10 bg-earth/40">
+    <section className="relative py-28 md:py-36 px-6 lg:px-10 bg-earth/40 texture-waves">
       <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <SectionHeader

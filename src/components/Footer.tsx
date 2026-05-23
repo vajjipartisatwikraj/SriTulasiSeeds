@@ -61,8 +61,21 @@ export function Footer() {
               <Phone className="h-3.5 w-3.5 mt-0.5" />
               <a href={`tel:${SITE.phone}`} className="text-xs md:text-sm hover:text-white">{SITE.phone}</a>
             </li>
+            <li className="flex gap-3">
+              <Phone className="h-3.5 w-3.5 mt-0.5" />
+              <a href={`tel:${SITE.phoneAlt}`} className="text-xs md:text-sm hover:text-white">{SITE.phoneAlt}</a>
+            </li>
+            <li className="pt-2 border-t border-white/10 mt-3">
+              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Owner</p>
+              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.owner}</p>
+            </li>
+            <li>
+              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Director</p>
+              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.director}</p>
+            </li>
           </ul>
         </div>
+
       </div>
       <div className="relative border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-3 text-xs md:text-sm text-white/60">
