@@ -76,16 +76,9 @@ export function Footer() {
               <Phone className="h-3.5 w-3.5 mt-0.5" />
               <a href={`tel:${SITE.phoneAlt}`} className="text-xs md:text-sm hover:text-white">{SITE.phoneAlt}</a>
             </li>
-            <li className="pt-2 border-t border-white/10 mt-3">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Owner</p>
-              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.owner}</p>
-            </li>
-            <li>
-              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Director</p>
-              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.director}</p>
-            </li>
           </ul>
         </div>
+
 
       </div>
       <div className="relative border-t border-white/10">
