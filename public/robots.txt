@@ -20,4 +20,4 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://sritulasiseeds.lovable.app/sitemap.xml
+Sitemap: https://sritulasiseeds.com/sitemap.xml
