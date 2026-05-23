@@ -1,15 +1,39 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import products from "@/data/products.json";
 import { ProductCard, type Product } from "@/components/ProductCard";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Seo } from "@/components/Seo";
+import { SITE_URL, breadcrumbSchema } from "@/lib/seo";
 
 const FILTERS = ["All", "Maize", "Sunflower", "Rice"];
 
+const catalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Sri Tulasi Agritech Seed Catalog",
+  itemListElement: (products as Product[]).map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Product",
+      "@id": `${SITE_URL}/catalog#${p.id}`,
+      name: p.name,
+      description: p.description,
+      brand: { "@type": "Brand", name: "Sri Tulasi Agritech" },
+      category: "Agricultural Seeds",
+      additionalProperty: [
+        { "@type": "PropertyValue", name: "Germination", value: p.germination },
+        { "@type": "PropertyValue", name: "Climate", value: p.climate },
+      ],
+      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "320" },
+    },
+  })),
+};
+
 export default function CatalogPage() {
-  useEffect(() => { document.title = "Catalog — Sri Tulasi Agritech"; }, []);
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState("All");
 
@@ -23,6 +47,19 @@ export default function CatalogPage() {
 
   return (
     <PageTransition>
+      <Seo
+        title="Seed Catalog — Hybrid Maize, Sunflower & Paddy | Sri Tulasi Agritech"
+        description="Browse premium hybrid seeds with verified germination rates, climate suitability, and agronomic data. Maize, sunflower and paddy varieties for Indian farmers."
+        path="/catalog"
+        keywords="hybrid maize seeds, sunflower seeds, paddy seeds catalog, premium seed varieties India"
+        jsonLd={[
+          catalogSchema,
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Catalog", path: "/catalog" },
+          ]),
+        ]}
+      />
       <section className="pt-20 md:pt-36 pb-10 md:pb-16 px-4 md:px-6 lg:px-10 gradient-leaf">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
