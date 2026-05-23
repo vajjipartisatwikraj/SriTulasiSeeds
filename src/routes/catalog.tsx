@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import products from "@/data/products.json";
@@ -7,19 +6,10 @@ import { ProductCard, type Product } from "@/components/ProductCard";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
 
-export const Route = createFileRoute("/catalog")({
-  head: () => ({
-    meta: [
-      { title: "Catalog — Sri Tulasi Agritech" },
-      { name: "description", content: "Browse premium maize, sunflower and rice paddy seeds from Sri Tulasi Agritech." },
-    ],
-  }),
-  component: CatalogPage,
-});
-
 const FILTERS = ["All", "Maize", "Sunflower", "Rice"];
 
-function CatalogPage() {
+export default function CatalogPage() {
+  useEffect(() => { document.title = "Catalog — Sri Tulasi Agritech"; }, []);
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState("All");
 

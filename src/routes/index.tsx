@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Sprout, ShieldCheck, Leaf, Microscope } from "lucide-react";
 import products from "@/data/products.json";
@@ -13,17 +13,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { IndiaMap } from "@/components/IndiaMap";
 import { FAQ } from "@/components/FAQ";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Sri Tulasi Agritech — Premium Seeds for Indian Agriculture" },
-      { name: "description", content: "Premium maize, sunflower and paddy seeds. Trusted by 12,000+ farmers across 6 Indian states since 2017." },
-    ],
-  }),
-  component: Home,
-});
-
-function Home() {
+export default function Home() {
   return (
     <PageTransition>
       <Hero />
