@@ -19,7 +19,17 @@ export function Footer() {
             Cultivating trust since {SITE.established}. Premium seeds, modern science, and a deep
             commitment to the Indian farmer.
           </p>
-          <div className="mt-4 md:mt-6 flex gap-2">
+          <div className="mt-5 md:mt-6 grid grid-cols-2 gap-4 max-w-md">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Owner</p>
+              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.owner}</p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Director</p>
+              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.director}</p>
+            </div>
+          </div>
+          <div className="mt-5 md:mt-6 flex gap-2">
             {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
               <a
                 key={i}
@@ -31,6 +41,7 @@ export function Footer() {
               </a>
             ))}
           </div>
+
         </div>
 
         <div>
@@ -65,16 +76,9 @@ export function Footer() {
               <Phone className="h-3.5 w-3.5 mt-0.5" />
               <a href={`tel:${SITE.phoneAlt}`} className="text-xs md:text-sm hover:text-white">{SITE.phoneAlt}</a>
             </li>
-            <li className="pt-2 border-t border-white/10 mt-3">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Owner</p>
-              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.owner}</p>
-            </li>
-            <li>
-              <p className="text-[10px] uppercase tracking-[0.16em] text-white/50">Director</p>
-              <p className="text-xs md:text-sm text-white/90 mt-1">{SITE.director}</p>
-            </li>
           </ul>
         </div>
+
 
       </div>
       <div className="relative border-t border-white/10">
