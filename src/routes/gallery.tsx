@@ -1,24 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { IMG } from "@/lib/images";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
 
-export const Route = createFileRoute("/gallery")({
-  head: () => ({
-    meta: [
-      { title: "Gallery — Sri Tulasi Agritech" },
-      { name: "description", content: "A visual journey through our farms, seeds, farmers, processing and packaging." },
-    ],
-  }),
-  component: GalleryPage,
-});
-
 const CATEGORIES = ["All", "Farms", "Seeds", "Farmers", "Processing", "Packaging"];
 
-function GalleryPage() {
+export default function GalleryPage() {
+  useEffect(() => { document.title = "Gallery — Sri Tulasi Agritech"; }, []);
   const [cat, setCat] = useState("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
 

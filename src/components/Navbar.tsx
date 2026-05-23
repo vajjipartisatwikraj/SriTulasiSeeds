@@ -1,13 +1,13 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV } from "@/lib/site";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -37,32 +37,30 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          {NAV.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className={`relative px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium md:font-semibold rounded-full transition-colors ${
-                transparent ? "text-white/85 hover:text-white" : "text-foreground/75 hover:text-primary"
-              }`}
-              activeOptions={{ exact: true }}
-            >
-              {({ isActive }) => (
-                <>
-                  <span className={isActive ? (transparent ? "text-white" : "text-primary") : ""}>
-                    {n.label}
-                  </span>
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className={`absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full ${
-                        transparent ? "bg-white" : "bg-leaf"
-                      }`}
-                    />
-                  )}
-                </>
-              )}
-            </Link>
-          ))}
+          {NAV.map((n) => {
+            const isActive = pathname === n.to;
+            return (
+              <Link
+                key={n.to}
+                to={n.to}
+                className={`relative px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium md:font-semibold rounded-full transition-colors ${
+                  transparent ? "text-white/85 hover:text-white" : "text-foreground/75 hover:text-primary"
+                }`}
+              >
+                <span className={isActive ? (transparent ? "text-white" : "text-primary") : ""}>
+                  {n.label}
+                </span>
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className={`absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full ${
+                      transparent ? "bg-white" : "bg-leaf"
+                    }`}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <Link
@@ -97,17 +95,20 @@ export function Navbar() {
             className="md:hidden mx-3 mb-3 rounded-3xl glass p-3 shadow-elegant"
           >
             <nav className="flex flex-col">
-              {NAV.map((n) => (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  className="px-3 py-2 rounded-xl text-xs md:text-sm text-foreground/80 hover:bg-leaf-soft hover:text-primary font-medium"
-                  activeOptions={{ exact: true }}
-                  activeProps={{ className: "!bg-leaf-soft !text-primary" }}
-                >
-                  {n.label}
-                </Link>
-              ))}
+              {NAV.map((n) => {
+                const isActive = pathname === n.to;
+                return (
+                  <Link
+                    key={n.to}
+                    to={n.to}
+                    className={`px-3 py-2 rounded-xl text-xs md:text-sm font-medium ${
+                      isActive ? "bg-leaf-soft text-primary" : "text-foreground/80 hover:bg-leaf-soft hover:text-primary"
+                    }`}
+                  >
+                    {n.label}
+                  </Link>
+                );
+              })}
               <Link
                 to="/contact"
                 className="mt-2 px-3 py-2 rounded-xl bg-primary text-primary-foreground font-semibold text-xs md:text-sm text-center"

@@ -1,20 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Send, Check, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Sri Tulasi Agritech" },
-      { name: "description", content: "Get in touch with Sri Tulasi Agritech. Hyderabad, India." },
-    ],
-  }),
-  component: ContactPage,
-});
 
 function FloatingInput({
   label, type = "text", value, onChange, required, textarea,
@@ -53,7 +42,8 @@ function FloatingInput({
   );
 }
 
-function ContactPage() {
+export default function ContactPage() {
+  useEffect(() => { document.title = "Contact — Sri Tulasi Agritech"; }, []);
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
