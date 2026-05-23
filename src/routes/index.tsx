@@ -12,10 +12,67 @@ import { Timeline } from "@/components/Timeline";
 import { Testimonials } from "@/components/Testimonials";
 import { IndiaMap } from "@/components/IndiaMap";
 import { FAQ } from "@/components/FAQ";
+import { Seo } from "@/components/Seo";
+import { SITE_URL, breadcrumbSchema } from "@/lib/seo";
+
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What makes Sri Tulasi seeds different from other brands?",
+      acceptedAnswer: { "@type": "Answer", text: "Every batch is lab-tested for germination, purity and disease resistance, then verified in field trials before release to farmers." },
+    },
+    {
+      "@type": "Question",
+      name: "What yield can I expect with Sri Tulasi hybrid seeds?",
+      acceptedAnswer: { "@type": "Answer", text: "Under optimal conditions, our maize hybrids deliver 45–50 q/ha, sunflower 15–18 q/ha, and paddy 50–60 q/ha." },
+    },
+    {
+      "@type": "Question",
+      name: "Which Indian states does Sri Tulasi Agritech serve?",
+      acceptedAnswer: { "@type": "Answer", text: "We supply hybrid maize, sunflower and paddy seeds across Andhra Pradesh, Telangana, Madhya Pradesh, Haryana, Karnataka, and Uttar Pradesh." },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide after-sales agronomic support?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes — pre-sowing soil analysis, crop management guidance, pest & disease support, and harvest advisory via phone, WhatsApp and regional centers." },
+    },
+  ],
+};
+
+const productsItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: (products as Product[]).map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Product",
+      name: p.name,
+      description: p.description,
+      brand: { "@type": "Brand", name: "Sri Tulasi Agritech" },
+      category: "Agricultural Seeds",
+      url: `${SITE_URL}/catalog#${p.id}`,
+    },
+  })),
+};
 
 export default function Home() {
   return (
     <PageTransition>
+      <Seo
+        title="Sri Tulasi Agritech — Premium Hybrid Maize, Sunflower & Paddy Seeds | Hyderabad"
+        description="Premium lab-tested hybrid seeds for Indian farmers. Trusted by 12,000+ growers across 6 states since 2017. Maize, sunflower & paddy varieties from Hyderabad, Telangana."
+        path="/"
+        keywords="hybrid seeds India, maize seeds, sunflower seeds, paddy seeds, premium seeds Hyderabad, Telangana seed company"
+        jsonLd={[
+          homeFaqSchema,
+          productsItemList,
+          breadcrumbSchema([{ name: "Home", path: "/" }]),
+        ]}
+      />
       <Hero />
       <Stats />
       <About />

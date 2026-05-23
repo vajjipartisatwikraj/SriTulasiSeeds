@@ -1,21 +1,47 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { IMG } from "@/lib/images";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Seo } from "@/components/Seo";
+import { SITE_URL, breadcrumbSchema } from "@/lib/seo";
 
 const CATEGORIES = ["All", "Farms", "Seeds", "Farmers", "Processing", "Packaging"];
 
 export default function GalleryPage() {
-  useEffect(() => { document.title = "Gallery — Sri Tulasi Agritech"; }, []);
   const [cat, setCat] = useState("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const items = IMG.gallery.filter((g) => cat === "All" || g.category === cat);
 
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Sri Tulasi Agritech Gallery",
+    image: IMG.gallery.map((g) => ({
+      "@type": "ImageObject",
+      contentUrl: g.src.startsWith("http") ? g.src : `${SITE_URL}${g.src}`,
+      description: g.alt,
+      caption: g.category,
+    })),
+  };
+
   return (
     <PageTransition>
+      <Seo
+        title="Gallery — Farms, Seeds & Farmers | Sri Tulasi Agritech"
+        description="A visual story of Sri Tulasi Agritech — our farms, hybrid seed processing, packaging facility, and the farmers we serve across six Indian states."
+        path="/gallery"
+        keywords="seed company gallery, agricultural farms India, seed processing facility, farmer photos"
+        jsonLd={[
+          gallerySchema,
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Gallery", path: "/gallery" },
+          ]),
+        ]}
+      />
       <section className="pt-36 pb-16 px-6 lg:px-10 gradient-leaf">
         <div className="mx-auto max-w-7xl">
           <SectionHeader

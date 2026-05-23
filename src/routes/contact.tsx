@@ -1,9 +1,19 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Send, Check, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Seo } from "@/components/Seo";
+import { breadcrumbSchema } from "@/lib/seo";
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Sri Tulasi Agritech",
+  url: "https://sritulasiseeds.lovable.app/contact",
+  mainEntity: { "@id": "https://sritulasiseeds.lovable.app/#localbusiness" },
+};
 
 function FloatingInput({
   label, type = "text", value, onChange, required, textarea,
@@ -43,7 +53,6 @@ function FloatingInput({
 }
 
 export default function ContactPage() {
-  useEffect(() => { document.title = "Contact — Sri Tulasi Agritech"; }, []);
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
@@ -58,6 +67,19 @@ export default function ContactPage() {
 
   return (
     <PageTransition>
+      <Seo
+        title="Contact Sri Tulasi Agritech — Hyderabad, Telangana | Seed Inquiries"
+        description="Get in touch with Sri Tulasi Agritech for hybrid seed orders, distributor inquiries, and agronomic support. Hyderabad office, phone +91 70366 09999."
+        path="/contact"
+        keywords="contact Sri Tulasi, seed distributor Hyderabad, seed company Telangana, agricultural inquiry"
+        jsonLd={[
+          contactPageSchema,
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
+      />
       <section className="pt-36 pb-12 px-6 lg:px-10 gradient-leaf">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
