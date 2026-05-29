@@ -164,7 +164,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl rounded-3xl overflow-hidden border border-border shadow-soft aspect-[16/7]">
           <iframe
             title="Sri Tulasi Agritech location"
-            src="https://www.google.com/maps?q=Jeedimetla,+Hyderabad&output=embed"
+            src="https://www.google.com/maps?q=VSS+Nandadeep+Apartment,+Medchal+Rd,+Dandamudi+Enclave,+Jeedimetla,+Hyderabad,+Telangana+500067&output=embed"
             className="w-full h-full border-0"
             loading="lazy"
           />
