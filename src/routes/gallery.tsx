@@ -19,12 +19,24 @@ export default function GalleryPage() {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
     name: "Sri Tulasi Agritech Gallery",
-    image: IMG.gallery.map((g) => ({
-      "@type": "ImageObject",
-      contentUrl: g.src.startsWith("http") ? g.src : `${SITE_URL}${g.src}`,
-      description: g.alt,
-      caption: g.category,
-    })),
+    image: IMG.gallery
+      .filter((g) => g.type !== "video")
+      .map((g) => ({
+        "@type": "ImageObject",
+        contentUrl: g.src.startsWith("http") ? g.src : `${SITE_URL}${g.src}`,
+        description: g.alt,
+        caption: g.category,
+      })),
+    video: IMG.gallery
+      .filter((g) => g.type === "video")
+      .map((g) => ({
+        "@type": "VideoObject",
+        name: g.alt,
+        description: g.alt,
+        contentUrl: g.src,
+        thumbnailUrl: g.poster,
+        uploadDate: "2026-01-01",
+      })),
   };
 
   return (
