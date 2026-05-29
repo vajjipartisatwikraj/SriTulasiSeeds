@@ -16,7 +16,7 @@ export const IMG = {
     fieldAlt: `${CDN}/about(field).jpg`,
   },
   products: {
-    maize: `${CDN}/maize1.jpeg`,
+    maize: `${CDN}/about(maize).jpeg`,
     sunflower: `${CDN}/sunflower-main.jpg`,
     rice: `${CDN}/paddy-main.jpg`,
   } as Record<string, string>,
