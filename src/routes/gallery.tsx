@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Play } from "lucide-react";
 import { IMG } from "@/lib/images";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Seo } from "@/components/Seo";
 import { SITE_URL, breadcrumbSchema } from "@/lib/seo";
 
-const CATEGORIES = ["All", "Farms", "Seeds", "Farmers", "Processing", "Packaging"];
+const CATEGORIES = ["All", "Farms", "Seeds", "Farmers", "Processing"];
 
 export default function GalleryPage() {
   const [cat, setCat] = useState("All");
