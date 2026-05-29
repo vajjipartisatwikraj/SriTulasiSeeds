@@ -2,12 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const OPERATING_STATES = [
-  { name: "Andhra Pradesh", code: "AP", x: 390, y: 500 },
-  { name: "Telangana", code: "TG", x: 350, y: 420 },
-  { name: "Madhya Pradesh", code: "MP", x: 320, y: 320 },
-  { name: "Haryana", code: "HR", x: 260, y: 180 },
-  { name: "Karnataka", code: "KA", x: 280, y: 550 },
-  { name: "Uttar Pradesh", code: "UP", x: 320, y: 220 },
+  { name: "Haryana", code: "HR", x: 290, y: 215 },
+  { name: "Uttar Pradesh", code: "UP", x: 365, y: 285 },
+  { name: "Madhya Pradesh", code: "MP", x: 320, y: 365 },
+  { name: "Telangana", code: "TG", x: 345, y: 485 },
+  { name: "Andhra Pradesh", code: "AP", x: 385, y: 535 },
+  { name: "Karnataka", code: "KA", x: 305, y: 595 },
 ];
 
 const blinkingAnimation = {
