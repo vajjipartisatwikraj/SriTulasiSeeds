@@ -194,7 +194,7 @@ function About() {
           <motion.img
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            src={IMG.gallery[0].src} alt="Farmer" loading="lazy"
+            src={IMG.about.field} alt="Sri Tulasi seed field" loading="lazy"
             className="rounded-3xl aspect-[3/4] object-cover w-full shadow-soft row-span-2"
           />
           <motion.div
@@ -202,8 +202,8 @@ function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col gap-4"
           >
-            <img src={IMG.gallery[4].src} alt="Seeds" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
-            <img src="/landscape-summer-farm-wheat-field-harvest-crops.jpg" alt="Fields" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
+            <img src={IMG.about.maize} alt="Premium hybrid maize" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
+            <img src={IMG.about.fieldAlt} alt="Open seed multiplication field" loading="lazy" className="rounded-3xl aspect-square object-cover w-full shadow-soft" />
           </motion.div>
         </div>
 
