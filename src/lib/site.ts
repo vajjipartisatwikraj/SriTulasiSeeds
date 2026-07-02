@@ -3,7 +3,7 @@ export const SITE = {
   short: "Sri Tulasi",
   tagline: "Empowering Indian Agriculture with Premium Seeds",
   established: 2017,
-  owner: "Thammaneni Veere Nagi Reddy",
+  owner: "Thammaneni Veera Nagi Reddy",
   director: "Chilakala Arjun Reddy",
   phone: "7036609999",
   phoneAlt: "7093535139",
