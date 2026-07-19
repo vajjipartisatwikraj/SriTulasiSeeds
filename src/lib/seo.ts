@@ -1,7 +1,7 @@
 // Central SEO configuration & JSON-LD builders for Sri Tulasi Agritech.
 // Keep all canonical URLs absolute and consistent with sitemap.xml.
 
-export const SITE_URL = "https://sritulasiseeds.lovable.app";
+export const SITE_URL = "https://sritulasiseeds.com";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/black-png.png`;
 
 export const ORG_NAME = "Sri Tulasi Agritech";

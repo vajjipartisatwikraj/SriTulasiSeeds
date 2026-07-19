@@ -7,15 +7,6 @@
     <link rel="icon" type="image/png" href="/black-png.png" />
     <link rel="apple-touch-icon" href="/black-png.png" />
 
-    <title>Sri Tulasi Agritech — Premium Hybrid Seeds for Indian Farmers | Hyderabad</title>
-    <meta
-      name="description"
-      content="Sri Tulasi Agritech produces premium hybrid maize, sunflower and paddy seeds — trusted by 12,000+ farmers across 6 Indian states since 2017. Hyderabad, Telangana."
-    />
-    <meta
-      name="keywords"
-      content="hybrid seeds India, maize seeds, sunflower seeds, paddy seeds, rice seeds, premium seeds Hyderabad, Telangana seed company, agricultural seeds, Sri Tulasi Agritech"
-    />
     <meta name="author" content="Sri Tulasi Agritech" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -24,31 +15,22 @@
     <meta name="geo.position" content="17.5197;78.4615" />
     <meta name="ICBM" content="17.5197, 78.4615" />
 
-    <!-- Social fallback (per-route Seo component overrides these on JS-executing crawlers) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Sri Tulasi Agritech — Premium Hybrid Seeds" />
-    <meta property="og:description" content="Empowering Indian agriculture with premium hybrid maize, sunflower and paddy seeds since 2017." />
-    <meta property="og:url" content="https://sritulasiseeds.lovable.app/" />
-    <meta property="og:image" content="https://sritulasiseeds.lovable.app/black-png.png" />
-    <meta property="og:site_name" content="Sri Tulasi Agritech" />
-    <meta property="og:locale" content="en_IN" />
-    <meta name="twitter:card" content="summary_large_image" />
-
     <!-- Performance hints -->
     <link rel="preconnect" href="https://sritulasiseeds.sgp1.cdn.digitaloceanspaces.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.google.com" />
 
+    <!-- Global structured data (present on every page) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://sritulasiseeds.lovable.app/#organization",
+            "@id": "https://sritulasiseeds.com/#organization",
             "name": "Sri Tulasi Agritech",
             "legalName": "SRI TULASI PVT. LTD",
-            "url": "https://sritulasiseeds.lovable.app",
-            "logo": "https://sritulasiseeds.lovable.app/black-png.png",
+            "url": "https://sritulasiseeds.com",
+            "logo": "https://sritulasiseeds.com/black-png.png",
             "foundingDate": "2017",
             "founder": { "@type": "Person", "name": "Thammaneni Veere Nagi Reddy" },
             "address": {
@@ -66,10 +48,10 @@
           },
           {
             "@type": "LocalBusiness",
-            "@id": "https://sritulasiseeds.lovable.app/#localbusiness",
+            "@id": "https://sritulasiseeds.com/#localbusiness",
             "name": "Sri Tulasi Agritech",
-            "image": "https://sritulasiseeds.lovable.app/black-png.png",
-            "url": "https://sritulasiseeds.lovable.app",
+            "image": "https://sritulasiseeds.com/black-png.png",
+            "url": "https://sritulasiseeds.com",
             "telephone": "+91-7036609999",
             "priceRange": "₹₹",
             "address": {
@@ -91,18 +73,21 @@
           },
           {
             "@type": "WebSite",
-            "@id": "https://sritulasiseeds.lovable.app/#website",
-            "url": "https://sritulasiseeds.lovable.app",
+            "@id": "https://sritulasiseeds.com/#website",
+            "url": "https://sritulasiseeds.com",
             "name": "Sri Tulasi Agritech",
-            "publisher": { "@id": "https://sritulasiseeds.lovable.app/#organization" },
+            "publisher": { "@id": "https://sritulasiseeds.com/#organization" },
             "inLanguage": "en-IN"
           }
         ]
       }
     </script>
+
+    <!-- Per-route SEO tags (title, description, canonical, Open Graph, page JSON-LD) injected here at build time -->
+    <!--app-head-->
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

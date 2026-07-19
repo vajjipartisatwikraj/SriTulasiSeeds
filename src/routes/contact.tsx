@@ -5,14 +5,14 @@ import { SITE } from "@/lib/site";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Seo } from "@/components/Seo";
-import { breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, SITE_URL } from "@/lib/seo";
 
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact Sri Tulasi Agritech",
-  url: "https://sritulasiseeds.lovable.app/contact",
-  mainEntity: { "@id": "https://sritulasiseeds.lovable.app/#localbusiness" },
+  url: `${SITE_URL}/contact`,
+  mainEntity: { "@id": `${SITE_URL}/#localbusiness` },
 };
 
 function FloatingInput({
