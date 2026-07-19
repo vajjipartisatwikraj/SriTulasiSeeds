@@ -6,32 +6,14 @@ import { ProductCard, type Product } from "@/components/ProductCard";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Seo } from "@/components/Seo";
-import { SITE_URL, breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, productItemListSchema } from "@/lib/seo";
 
 const FILTERS = ["All", "Maize", "Sunflower", "Rice"];
 
-const catalogSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Sri Tulasi Agritech Seed Catalog",
-  itemListElement: (products as Product[]).map((p, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "Product",
-      "@id": `${SITE_URL}/catalog#${p.id}`,
-      name: p.name,
-      description: p.description,
-      brand: { "@type": "Brand", name: "Sri Tulasi Agritech" },
-      category: "Agricultural Seeds",
-      additionalProperty: [
-        { "@type": "PropertyValue", name: "Germination", value: p.germination },
-        { "@type": "PropertyValue", name: "Climate", value: p.climate },
-      ],
-      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "320" },
-    },
-  })),
-};
+const catalogSchema = productItemListSchema(
+  products as Product[],
+  "Sri Tulasi Agritech Seed Catalog",
+);
 
 export default function CatalogPage() {
   const [q, setQ] = useState("");

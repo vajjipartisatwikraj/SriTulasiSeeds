@@ -92,6 +92,60 @@ export const websiteSchema = {
   inLanguage: "en-IN",
 };
 
+// Aggregate rating shown on product cards AND emitted in Product structured
+// data. Keep these two in sync — the values below must reflect the rating that
+// is actually displayed to users (Google requires markup to match the page).
+export const PRODUCT_RATING = { ratingValue: "4.8", reviewCount: "320" };
+
+interface ProductInput {
+  id: string;
+  name: string;
+  description: string;
+  germination?: string;
+  climate?: string;
+}
+
+/**
+ * Single source of truth for Product structured data. Includes the
+ * `aggregateRating` required by Google for Product rich results.
+ */
+export function productSchema(p: ProductInput) {
+  const additionalProperty = [
+    p.germination && { "@type": "PropertyValue", name: "Germination", value: p.germination },
+    p.climate && { "@type": "PropertyValue", name: "Climate", value: p.climate },
+  ].filter(Boolean);
+
+  return {
+    "@type": "Product",
+    "@id": `${SITE_URL}/catalog#${p.id}`,
+    name: p.name,
+    description: p.description,
+    brand: { "@type": "Brand", name: ORG_NAME },
+    category: "Agricultural Seeds",
+    url: `${SITE_URL}/catalog#${p.id}`,
+    ...(additionalProperty.length ? { additionalProperty } : {}),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: PRODUCT_RATING.ratingValue,
+      reviewCount: PRODUCT_RATING.reviewCount,
+    },
+  };
+}
+
+/** Builds an ItemList of Products for a page. */
+export function productItemListSchema(products: ProductInput[], name?: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    ...(name ? { name } : {}),
+    itemListElement: products.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: productSchema(p),
+    })),
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",

@@ -13,7 +13,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { IndiaMap } from "@/components/IndiaMap";
 import { FAQ } from "@/components/FAQ";
 import { Seo } from "@/components/Seo";
-import { SITE_URL, breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, productItemListSchema } from "@/lib/seo";
 
 const homeFaqSchema = {
   "@context": "https://schema.org",
@@ -42,22 +42,7 @@ const homeFaqSchema = {
   ],
 };
 
-const productsItemList = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  itemListElement: (products as Product[]).map((p, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "Product",
-      name: p.name,
-      description: p.description,
-      brand: { "@type": "Brand", name: "Sri Tulasi Agritech" },
-      category: "Agricultural Seeds",
-      url: `${SITE_URL}/catalog#${p.id}`,
-    },
-  })),
-};
+const productsItemList = productItemListSchema(products as Product[]);
 
 export default function Home() {
   return (

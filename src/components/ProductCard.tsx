@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Leaf } from "lucide-react";
+import { ArrowUpRight, Leaf, Star } from "lucide-react";
 import { IMG } from "@/lib/images";
+import { PRODUCT_RATING } from "@/lib/seo";
 
 export type Product = {
   id: string;
@@ -44,7 +45,17 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       </div>
       <div className="p-4 md:p-7">
         <p className="text-[10px] sm:text-xs font-medium sm:font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-leaf">{product.tagline}</p>
-        <h3 className="mt-1.5 md:mt-2 font-display text-lg sm:text-2xl font-medium sm:font-semibold">{product.name}</h3>
+        <div className="mt-1.5 md:mt-2 flex items-center justify-between gap-2">
+          <h3 className="font-display text-lg sm:text-2xl font-medium sm:font-semibold">{product.name}</h3>
+          <span
+            className="flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-foreground shrink-0"
+            aria-label={`Rated ${PRODUCT_RATING.ratingValue} out of 5 from ${PRODUCT_RATING.reviewCount} reviews`}
+          >
+            <Star className="h-3.5 w-3.5 fill-leaf text-leaf" />
+            {PRODUCT_RATING.ratingValue}
+            <span className="font-normal text-muted-foreground">({PRODUCT_RATING.reviewCount})</span>
+          </span>
+        </div>
         <p className="mt-2 md:mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">{product.description}</p>
         <ul className="mt-3 md:mt-5">
           <li className="flex items-center gap-2 text-[10px] sm:text-xs">
